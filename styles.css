@@ -2,12 +2,12 @@
     --primary: #ffffff;
     --dark: #000000;
     --light: #ffffff;
-    --secondary: #888888;
-    --btn-bg: #121212;
-    --btn-hover: #252525;
-    --number-bg: #1a1a1a;
-    --operator-bg: #2a2a2a;
-    --scientific-bg: #0a0a0a;
+    --secondary: #aaaaaa;
+    --btn-bg: #000000;
+    --btn-hover: #ffffff;
+    --number-bg: #000000;
+    --operator-bg: #000000;
+    --scientific-bg: #000000;
 }
 
 * {
@@ -34,11 +34,11 @@ body {
 }
 
 .calculator {
-    background-color: #050505;
+    background-color: #000000;
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 0 2px #ffffff;
+    border: none;
 }
 
 .display-section {
@@ -51,7 +51,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 2px solid #ffffff;
 }
 
 .history {
@@ -81,7 +81,7 @@ body {
 
 .btn {
     aspect-ratio: 1;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    border: 2px solid #ffffff;
     border-radius: 12px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -90,13 +90,13 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: var(--light);
-    background-color: var(--btn-bg);
+    color: #ffffff;
+    background-color: #000000;
 }
 
 .btn:hover {
-    background-color: var(--btn-hover);
-    border-color: rgba(255, 255, 255, 0.2);
+    background-color: #ffffff;
+    color: #000000;
     transform: translateY(-2px);
 }
 
@@ -105,23 +105,23 @@ body {
 }
 
 .btn.number {
-    background-color: var(--number-bg);
+    background-color: #000000;
 }
 
 .btn.operator {
     color: #ffffff;
-    background-color: var(--operator-bg);
+    background-color: #000000;
 }
 
 .btn.scientific {
     font-size: 0.9rem;
-    background-color: var(--scientific-bg);
-    color: #cccccc;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .btn.control {
     color: #ffffff;
-    background-color: #333333;
+    background-color: #000000;
 }
 
 .btn.action {
@@ -130,11 +130,12 @@ body {
     background-color: #ffffff;
     color: #000000;
     font-size: 1.5rem;
+    border: 2px solid #ffffff;
 }
 
 .btn.action:hover {
-    background-color: #e0e0e0;
-    filter: none;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 /* For small screens */
