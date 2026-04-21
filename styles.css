@@ -1,12 +1,13 @@
 :root {
-    --primary: #00b7af;
-    --dark: #10181f;
+    --primary: #ffffff;
+    --dark: #000000;
     --light: #ffffff;
-    --secondary: #6a7071;
-    --btn-bg: #1a252f;
-    --btn-hover: #253341;
-    --number-bg: #2c3e50;
-    --operator-bg: #34495e;
+    --secondary: #888888;
+    --btn-bg: #121212;
+    --btn-hover: #252525;
+    --number-bg: #1a1a1a;
+    --operator-bg: #2a2a2a;
+    --scientific-bg: #0a0a0a;
 }
 
 * {
@@ -33,23 +34,24 @@ body {
 }
 
 .calculator {
-    background-color: #0d141b;
+    background-color: #050505;
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 183, 175, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 20px 50px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .display-section {
     text-align: right;
     margin-bottom: 24px;
     padding: 20px;
-    background: rgba(0, 0, 0, 0.2);
+    background: #000000;
     border-radius: 16px;
     min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .history {
@@ -79,7 +81,7 @@ body {
 
 .btn {
     aspect-ratio: 1;
-    border: none;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 12px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -94,6 +96,7 @@ body {
 
 .btn:hover {
     background-color: var(--btn-hover);
+    border-color: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
 }
 
@@ -102,35 +105,36 @@ body {
 }
 
 .btn.number {
-    background-color: #1e2a36;
+    background-color: var(--number-bg);
 }
 
 .btn.operator {
-    color: var(--primary);
-    background-color: #16242e;
+    color: #ffffff;
+    background-color: var(--operator-bg);
 }
 
 .btn.scientific {
     font-size: 0.9rem;
-    background-color: #141e27;
-    color: #8fa3ad;
+    background-color: var(--scientific-bg);
+    color: #cccccc;
 }
 
 .btn.control {
-    color: #ff5e5e;
+    color: #ffffff;
+    background-color: #333333;
 }
 
 .btn.action {
     grid-column: span 2;
     aspect-ratio: auto;
-    background-color: var(--primary);
-    color: var(--dark);
+    background-color: #ffffff;
+    color: #000000;
     font-size: 1.5rem;
 }
 
 .btn.action:hover {
-    background-color: #00d4ca;
-    filter: brightness(1.1);
+    background-color: #e0e0e0;
+    filter: none;
 }
 
 /* For small screens */
