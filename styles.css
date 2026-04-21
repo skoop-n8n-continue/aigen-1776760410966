@@ -1,0 +1,145 @@
+:root {
+    --primary: #00b7af;
+    --dark: #10181f;
+    --light: #ffffff;
+    --secondary: #6a7071;
+    --btn-bg: #1a252f;
+    --btn-hover: #253341;
+    --number-bg: #2c3e50;
+    --operator-bg: #34495e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: var(--dark);
+    color: var(--light);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.calculator-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 20px;
+}
+
+.calculator {
+    background-color: #0d141b;
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 183, 175, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.display-section {
+    text-align: right;
+    margin-bottom: 24px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.history {
+    font-size: 1rem;
+    color: var(--secondary);
+    min-height: 1.2em;
+    margin-bottom: 8px;
+    font-family: 'JetBrains Mono', monospace;
+    word-break: break-all;
+}
+
+.current-input {
+    font-size: 3rem;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--light);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    aspect-ratio: 1;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--light);
+    background-color: var(--btn-bg);
+}
+
+.btn:hover {
+    background-color: var(--btn-hover);
+    transform: translateY(-2px);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn.number {
+    background-color: #1e2a36;
+}
+
+.btn.operator {
+    color: var(--primary);
+    background-color: #16242e;
+}
+
+.btn.scientific {
+    font-size: 0.9rem;
+    background-color: #141e27;
+    color: #8fa3ad;
+}
+
+.btn.control {
+    color: #ff5e5e;
+}
+
+.btn.action {
+    grid-column: span 2;
+    aspect-ratio: auto;
+    background-color: var(--primary);
+    color: var(--dark);
+    font-size: 1.5rem;
+}
+
+.btn.action:hover {
+    background-color: #00d4ca;
+    filter: brightness(1.1);
+}
+
+/* For small screens */
+@media (max-width: 400px) {
+    .btn {
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+    .current-input {
+        font-size: 2.2rem;
+    }
+}

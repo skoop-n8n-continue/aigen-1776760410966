@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Scientific Calculator</title>
+    <link rel="stylesheet" href="styles.css?v=s7k3n2">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="calculator-container">
+        <div class="calculator">
+            <div class="display-section">
+                <div class="history" id="history"></div>
+                <div class="current-input" id="display">0</div>
+            </div>
+            <div class="keypad">
+                <!-- Row 1: Scientific Functions -->
+                <button class="btn scientific" onclick="appendFunction('sin(')">sin</button>
+                <button class="btn scientific" onclick="appendFunction('cos(')">cos</button>
+                <button class="btn scientific" onclick="appendFunction('tan(')">tan</button>
+                <button class="btn scientific" onclick="appendConstant('π')">π</button>
+                <button class="btn scientific" onclick="appendConstant('e')">e</button>
+
+                <!-- Row 2: Powers/Logs -->
+                <button class="btn scientific" onclick="appendFunction('log(')">log</button>
+                <button class="btn scientific" onclick="appendFunction('ln(')">ln</button>
+                <button class="btn scientific" onclick="appendOperator('^')">xʸ</button>
+                <button class="btn scientific" onclick="appendFunction('sqrt(')">√</button>
+                <button class="btn scientific" onclick="appendFunction('fact(')">x!</button>
+
+                <!-- Row 3: Standard controls -->
+                <button class="btn control" onclick="clearDisplay()">AC</button>
+                <button class="btn control" onclick="deleteLast()">DEL</button>
+                <button class="btn scientific" onclick="appendValue('(')">(</button>
+                <button class="btn scientific" onclick="appendValue(')')">)</button>
+                <button class="btn operator" onclick="appendOperator('/')">÷</button>
+
+                <!-- Row 4: Numbers and Operators -->
+                <button class="btn number" onclick="appendValue('7')">7</button>
+                <button class="btn number" onclick="appendValue('8')">8</button>
+                <button class="btn number" onclick="appendValue('9')">9</button>
+                <button class="btn operator" onclick="appendOperator('*')">×</button>
+
+                <!-- Row 5: Numbers and Operators -->
+                <button class="btn number" onclick="appendValue('4')">4</button>
+                <button class="btn number" onclick="appendValue('5')">5</button>
+                <button class="btn number" onclick="appendValue('6')">6</button>
+                <button class="btn operator" onclick="appendOperator('-')">-</button>
+
+                <!-- Row 6: Numbers and Operators -->
+                <button class="btn number" onclick="appendValue('1')">1</button>
+                <button class="btn number" onclick="appendValue('2')">2</button>
+                <button class="btn number" onclick="appendValue('3')">3</button>
+                <button class="btn operator" onclick="appendOperator('+')">+</button>
+
+                <!-- Row 7: Bottom -->
+                <button class="btn number" onclick="appendValue('0')">0</button>
+                <button class="btn number" onclick="appendValue('.')">.</button>
+                <button class="btn number" onclick="appendValue('e')">exp</button>
+                <button class="btn action" id="equals-btn" onclick="calculate()">=</button>
+            </div>
+        </div>
+    </div>
+    <script src="script.js?v=s7k3n2"></script>
+</body>
+</html>
