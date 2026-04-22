@@ -1,11 +1,11 @@
 :root {
     --primary: #FFD700;
-    --orange-dark: #CC5500;
-    --orange-mid: #FF8C00;
-    --orange-light: #FFF3E0;
-    --text-dark: #331A00;
+    --purple-dark: #4B0082;
+    --purple-mid: #800080;
+    --purple-light: #F3E5F5;
+    --text-dark: #1A001A;
     --btn-bg: #FFD700;
-    --btn-hover: #FF8C00;
+    --btn-hover: #9932CC;
 }
 
 * {
@@ -16,8 +16,8 @@
 }
 
 body {
-    background-color: var(--orange-mid);
-    color: var(--text-dark);
+    background-color: var(--purple-mid);
+    color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,10 +32,10 @@ body {
 }
 
 .calculator {
-    background-color: var(--orange-dark);
+    background-color: var(--purple-dark);
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.4);
     border: 4px solid var(--primary);
 }
 
@@ -43,18 +43,18 @@ body {
     text-align: right;
     margin-bottom: 24px;
     padding: 20px;
-    background: var(--orange-light);
+    background: var(--purple-light);
     border-radius: 16px;
     min-height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    border: 2px solid var(--orange-dark);
+    border: 2px solid var(--purple-dark);
 }
 
 .history {
     font-size: 1rem;
-    color: var(--orange-mid);
+    color: var(--purple-mid);
     min-height: 1.2em;
     margin-bottom: 8px;
     font-family: 'JetBrains Mono', monospace;
@@ -79,7 +79,7 @@ body {
 
 .btn {
     aspect-ratio: 1;
-    border: 2px solid var(--orange-dark);
+    border: 2px solid var(--purple-dark);
     border-radius: 12px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -93,7 +93,7 @@ body {
 }
 
 .btn:hover {
-    background-color: var(--orange-mid);
+    background-color: var(--btn-hover);
     color: white;
     border-color: var(--primary);
     transform: translateY(-2px);
@@ -108,26 +108,26 @@ body {
 }
 
 .btn.operator {
-    background-color: #FFA500;
+    background-color: #BA55D3;
     color: white;
 }
 
 .btn.scientific {
     font-size: 0.9rem;
-    background-color: var(--orange-mid);
+    background-color: var(--purple-mid);
     color: white;
-    border-color: var(--orange-dark);
+    border-color: var(--purple-dark);
 }
 
 .btn.control {
-    background-color: #FF7F50;
+    background-color: #DA70D6;
     color: white;
 }
 
 .btn.action {
     grid-column: span 2;
     aspect-ratio: auto;
-    background-color: #FF4500;
+    background-color: #9400D3;
     color: white;
     font-size: 1.5rem;
     border: 2px solid var(--primary);
@@ -135,7 +135,7 @@ body {
 
 .btn.action:hover {
     background-color: white;
-    color: #FF4500;
+    color: #9400D3;
 }
 
 /* For small screens */
