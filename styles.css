@@ -1,10 +1,10 @@
 :root {
-    --primary: #ffffff;
+    --primary: #ffcc00;
     --dark: #000000;
-    --light: #ffffff;
+    --light: #ffcc00;
     --secondary: #aaaaaa;
     --btn-bg: #000000;
-    --btn-hover: #ffffff;
+    --btn-hover: #ffcc00;
     --number-bg: #000000;
     --operator-bg: #000000;
     --scientific-bg: #000000;
@@ -37,7 +37,7 @@ body {
     background-color: #000000;
     border-radius: 24px;
     padding: 24px;
-    box-shadow: 0 0 0 2px #ffffff;
+    box-shadow: 0 0 0 2px #ffcc00;
     border: none;
 }
 
@@ -51,7 +51,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    border: 2px solid #ffffff;
+    border: 2px solid #ffcc00;
 }
 
 .history {
@@ -81,7 +81,7 @@ body {
 
 .btn {
     aspect-ratio: 1;
-    border: 2px solid #ffffff;
+    border: 2px solid #ffcc00;
     border-radius: 12px;
     font-size: 1.1rem;
     font-weight: 600;
@@ -90,12 +90,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #ffffff;
+    color: #ffcc00;
     background-color: #000000;
 }
 
 .btn:hover {
-    background-color: #ffffff;
+    background-color: #ffcc00;
     color: #000000;
     transform: translateY(-2px);
 }
@@ -109,33 +109,33 @@ body {
 }
 
 .btn.operator {
-    color: #ffffff;
+    color: #ffcc00;
     background-color: #000000;
 }
 
 .btn.scientific {
     font-size: 0.9rem;
     background-color: #000000;
-    color: #ffffff;
+    color: #ffcc00;
 }
 
 .btn.control {
-    color: #ffffff;
+    color: #ffcc00;
     background-color: #000000;
 }
 
 .btn.action {
     grid-column: span 2;
     aspect-ratio: auto;
-    background-color: #ffffff;
+    background-color: #ffcc00;
     color: #000000;
     font-size: 1.5rem;
-    border: 2px solid #ffffff;
+    border: 2px solid #ffcc00;
 }
 
 .btn.action:hover {
     background-color: #000000;
-    color: #ffffff;
+    color: #ffcc00;
 }
 
 /* For small screens */
