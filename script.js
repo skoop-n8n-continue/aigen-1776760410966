@@ -1,13 +1,20 @@
 const display = document.getElementById('display');
 const historyDisplay = document.getElementById('history');
+const modeIndicator = document.getElementById('mode-indicator');
 
 let currentInput = '0';
 let history = '';
 let shouldResetDisplay = false;
+let isDegreeMode = true;
 
 function updateDisplay() {
     display.textContent = currentInput;
     historyDisplay.textContent = history;
+}
+
+function toggleMode() {
+    isDegreeMode = !isDegreeMode;
+    modeIndicator.textContent = isDegreeMode ? 'DEG' : 'RAD';
 }
 
 function appendValue(value) {
@@ -25,7 +32,6 @@ function appendFunction(func) {
         currentInput = func;
         shouldResetDisplay = false;
     } else {
-        // If the last character is a number or closing paren, add multiplication
         const lastChar = currentInput.slice(-1);
         if (/[0-9)]/.test(lastChar)) {
             currentInput += '*' + func;
@@ -39,7 +45,6 @@ function appendFunction(func) {
 function appendOperator(op) {
     if (shouldResetDisplay) shouldResetDisplay = false;
 
-    // Replace last operator if present
     const lastChar = currentInput.slice(-1);
     if (['+', '-', '*', '/', '^'].includes(lastChar)) {
         currentInput = currentInput.slice(0, -1) + op;
@@ -89,43 +94,43 @@ function calculate() {
         let expression = currentInput;
         history = expression + ' =';
 
-        // Sanitize and replace for evaluation
-        expression = expression.replace(/×/g, '*').replace(/÷/g, '/');
+        // Replace constants with Math values, avoiding scientific notation conflict
+        // Replace 'e' only when not preceded or followed by a digit (scientific notation)
+        expression = expression.replace(/(?<![0-9])e(?![0-9])/g, 'Math.E');
         expression = expression.replace(/π/g, 'Math.PI');
-        expression = expression.replace(/e/g, 'Math.E');
 
-        // Handle powers: x^y -> Math.pow(x, y)
-        // This is complex for nested powers, so we'll use a simpler regex or replace with **
+        // Sanitize operators
+        expression = expression.replace(/×/g, '*').replace(/÷/g, '/');
         expression = expression.replace(/\^/g, '**');
 
-        // Handle functions
-        expression = expression.replace(/sin\(/g, 'Math.sin(');
-        expression = expression.replace(/cos\(/g, 'Math.cos(');
-        expression = expression.replace(/tan\(/g, 'Math.tan(');
+        // Handle trig functions with degree/radian conversion
+        if (isDegreeMode) {
+            expression = expression.replace(/sin\(/g, 'Math.sin(Math.PI/180*');
+            expression = expression.replace(/cos\(/g, 'Math.cos(Math.PI/180*');
+            expression = expression.replace(/tan\(/g, 'Math.tan(Math.PI/180*');
+        } else {
+            expression = expression.replace(/sin\(/g, 'Math.sin(');
+            expression = expression.replace(/cos\(/g, 'Math.cos(');
+            expression = expression.replace(/tan\(/g, 'Math.tan(');
+        }
+
         expression = expression.replace(/log\(/g, 'Math.log10(');
         expression = expression.replace(/ln\(/g, 'Math.log(');
         expression = expression.replace(/sqrt\(/g, 'Math.sqrt(');
 
-        // Factorial function
         const fact = (n) => {
             if (n < 0) return NaN;
             if (n === 0) return 1;
             let res = 1;
-            for (let i = 2; i <= n; i++) res *= i;
+            for (let i = 2; i <= Math.floor(n); i++) res *= i;
             return res;
         };
 
-        // Handle factorial (simpler approach: replace fact(x) with the function call)
-        // We'll expose 'fact' to the evaluation context
-        const context = { fact };
-
-        // Use Function constructor for safer evaluation than eval
         const result = new Function('fact', 'return ' + expression)(fact);
 
         if (isNaN(result) || !isFinite(result)) {
             currentInput = 'Error';
         } else {
-            // Round to avoid floating point issues
             currentInput = Number(parseFloat(result.toPrecision(12)).toString());
         }
 
@@ -138,7 +143,6 @@ function calculate() {
     }
 }
 
-// Add keyboard support
 document.addEventListener('keydown', (e) => {
     if (e.key >= '0' && e.key <= '9') appendValue(e.key);
     if (e.key === '.') appendValue('.');
@@ -154,21 +158,20 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') clearDisplay();
 });
 
-// Auto-run/Demo mode for digital signage
 let idleTimer;
 function startIdleTimer() {
     clearTimeout(idleTimer);
-    idleTimer = setTimeout(runDemo, 10000); // 10 seconds idle
+    idleTimer = setTimeout(runDemo, 10000);
 }
 
 function runDemo() {
     if (currentInput !== '0' && !shouldResetDisplay) return;
 
     const demos = [
-        () => { currentInput = 'sin(π/4)'; calculate(); },
-        () => { currentInput = 'sqrt(144)'; calculate(); },
-        () => { currentInput = '2^10'; calculate(); },
-        () => { currentInput = 'log(100)'; calculate(); }
+        () => { currentInput = 'sin(30)'; calculate(); },
+        () => { currentInput = 'sqrt(256)'; calculate(); },
+        () => { currentInput = '2^8'; calculate(); },
+        () => { currentInput = 'log(1000)'; calculate(); }
     ];
 
     const randomDemo = demos[Math.floor(Math.random() * demos.length)];
@@ -176,9 +179,6 @@ function runDemo() {
     startIdleTimer();
 }
 
-// Reset idle timer on any interaction
 document.addEventListener('click', startIdleTimer);
 document.addEventListener('keydown', startIdleTimer);
-
-// Initial start
 startIdleTimer();

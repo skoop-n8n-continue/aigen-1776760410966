@@ -8,7 +8,7 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title>Scientific Calculator</title>
-    <link rel="stylesheet" href="styles.css?v=yp1">
+    <link rel="stylesheet" href="styles.css?v=bw1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
@@ -17,6 +17,10 @@
     <div class="calculator-container">
         <div class="calculator">
             <div class="display-section">
+                <div class="mode-container">
+                    <span id="mode-indicator">DEG</span>
+                    <button class="mode-toggle" onclick="toggleMode()">Switch</button>
+                </div>
                 <div class="history" id="history"></div>
                 <div class="current-input" id="display">0</div>
             </div>
@@ -68,7 +72,7 @@
             </div>
         </div>
     </div>
-    <script src="script.js?v=yp1"></script>
+    <script src="script.js?v=bw1"></script>
   <script>
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', function () {
